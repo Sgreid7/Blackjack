@@ -14,7 +14,7 @@ namespace Blackjack
         // List out the suits and values that will make a card
         var deck = new List<Card>();
         var suits = new List<string>() { "Clubs", "Diamonds", "Hearts", "Spades" };
-        var ranks = new List<string>() { "ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king" };
+        var ranks = new List<string>() { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
 
         // Iterate through the suit and rank lists to generate a card
         // This will create 52 unique cards
@@ -32,7 +32,7 @@ namespace Blackjack
 
         // Implement the algorithm to shuffle the deck
         // for i from n - 1 down to 1 do:
-        for (var i = deck.Count - 1; i >= 1; i--)
+        for (var i = deck.Count - 1; i >= 0; i--)
         {
           // j = random integer (where 0 <= j <= i)
           var j = new Random().Next(i);
@@ -78,6 +78,8 @@ namespace Blackjack
 
         // ********** PLAYER **********
         var input = "";
+        // keep track of player cards
+        var x = 2;
         while (player.HandValue < 21 && input != "stand")
         {
           // Ask if user wants to hit for another card or stay put
@@ -102,7 +104,7 @@ namespace Blackjack
             // Add card to the player hand
             player.DealCard(deck);
             // // // Print out the card
-            Console.WriteLine($"Your next card is: {player.Hand[2].DisplayCard()} and has a value of {player.Hand[2].GetCardValue()}.");
+            Console.WriteLine($"Your next card is: {player.Hand[x].DisplayCard()} and has a value of {player.Hand[x].GetCardValue()}.");
             // // Add space for readability 
             Console.WriteLine("");
             // // Notify user of their current hand value
@@ -119,6 +121,7 @@ namespace Blackjack
             Console.WriteLine($"The total value for your hand remains at {player.HandValue}.");
             Console.WriteLine("");
           }
+          x++;
         }
 
 
@@ -140,7 +143,10 @@ namespace Blackjack
           Console.WriteLine("-----------------------------------");
           // Print out the total for the dealer hand
           Console.WriteLine($"The total value for the dealer's hand is {house.HandValue}.");
+
           // If house total is less than 17 it is required to hit and draw a card
+          // Keep track of dealer cards
+          var y = 2;
           while (house.HandValue < 17)
           {
             //Add space for readability
@@ -148,19 +154,22 @@ namespace Blackjack
             // Add new card
             house.DealCard(deck);
             // Print out dealers next card
-            Console.WriteLine($"The dealer's next card is: {house.Hand[2].DisplayCard()} and has a value of {house.Hand[2].GetCardValue()}.");
+            Console.WriteLine($"The dealer's next card is: {house.Hand[y].DisplayCard()} and has a value of {house.Hand[y].GetCardValue()}.");
             // Notify user of the updated house value
             Console.WriteLine($"The total value for the dealer's hand is now {house.HandValue}.");
+            // increment player cards
+            y++;
           }
 
           // Add a space for readability 
           Console.WriteLine("");
-
           // Check if house went over
           // If house total is over 21 player wins
           if (house.HandValue > 21)
           {
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Bust! You win. The dealer went over 21.");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
           }
           // If house total is not over 21, check it against player total
           else
@@ -175,7 +184,9 @@ namespace Blackjack
             }
             else if (house.HandValue < player.HandValue)
             {
+              Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
               Console.WriteLine($"You win! Your card total ({player.HandValue}) was higher than the dealer's total ({house.HandValue}).");
+              Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             }
           }
 

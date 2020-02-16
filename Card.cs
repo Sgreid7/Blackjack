@@ -18,11 +18,11 @@ namespace Blackjack
     }
     public int GetCardValue()
     {
-      if (Rank == "ace")
+      if (Rank == "Ace")
       {
         return 11;
       }
-      else if (Rank == "queen" || Rank == "king" || Rank == "jack")
+      else if (Rank == "Queen" || Rank == "King" || Rank == "Jack")
       {
         return 10;
       }
