@@ -12,7 +12,6 @@ namespace Blackjack
     public int Value { get; set; }
 
     // METHODS
-
     public string DisplayCard()
     {
       return $"{Rank} of {Suit}";
