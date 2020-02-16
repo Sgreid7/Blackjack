@@ -11,36 +11,11 @@ namespace Blackjack
       var isPlaying = true;
       while (isPlaying)
       {
-        // List out the suits and values that will make a card
-        var deck = new List<Card>();
-        var suits = new List<string>() { "Clubs", "Diamonds", "Hearts", "Spades" };
-        var ranks = new List<string>() { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
+        // Create and assemble a deck from the deck class
+        var deck = new Deck();
+        // Shuffle the deck from a method in the deck class
+        deck.ShuffleDeck();
 
-        // Iterate through the suit and rank lists to generate a card
-        // This will create 52 unique cards
-        for (var i = 0; i < suits.Count; i++)
-        {
-          for (var j = 0; j < ranks.Count; j++)
-          {
-            var card = new Card();
-            card.Suit = suits[i];
-            card.Rank = ranks[j];
-
-            deck.Add(card);
-          }
-        }
-
-        // Implement the algorithm to shuffle the deck
-        // for i from n - 1 down to 1 do:
-        for (var i = deck.Count - 1; i >= 0; i--)
-        {
-          // j = random integer (where 0 <= j <= i)
-          var j = new Random().Next(i);
-          // swap deck[i] with deck[j]
-          var temp = deck[j];
-          deck[j] = deck[i];
-          deck[i] = temp;
-        }
 
         // CREATE PLAYER AND HOUSE HANDS
         // Add a player hand and a house hand
@@ -55,17 +30,17 @@ namespace Blackjack
 
         // Add 2 cards to the house hand and keep hidden. Remove these 2 from the deck
         // Use method to add card to the house hand
-        house.DealCard(deck);
-        house.DealCard(deck);
+        house.DealCard(deck.Cards);
+        house.DealCard(deck.Cards);
 
         Console.WriteLine("----------------------------------------------------------");
         // Add 2 cards to the player hand. Remove these 2 from the deck
         // Add first card to player hand
-        player.DealCard(deck);
+        player.DealCard(deck.Cards);
         // Print first card value
         Console.WriteLine($"Your first card is: {player.Hand[0].DisplayCard()} and has a value of {player.Hand[0].GetCardValue()}.");
         // Add second card to player hand
-        player.DealCard(deck);
+        player.DealCard(deck.Cards);
         // Print second card value
         Console.WriteLine($"Your second card is: {player.Hand[1].DisplayCard()} and has a value of {player.Hand[1].GetCardValue()}.");
         Console.WriteLine("----------------------------------------------------------");
@@ -102,13 +77,16 @@ namespace Blackjack
             // Let player know they chose to draw another card
             Console.WriteLine("You have chosen to draw another card.");
             // Add card to the player hand
-            player.DealCard(deck);
+            player.DealCard(deck.Cards);
             // // // Print out the card
             Console.WriteLine($"Your next card is: {player.Hand[x].DisplayCard()} and has a value of {player.Hand[x].GetCardValue()}.");
             // // Add space for readability 
             Console.WriteLine("");
             // // Notify user of their current hand value
+            Console.WriteLine("--------------------------------------------------");
             Console.WriteLine($"The total value for your hand is now {player.HandValue}.");
+            Console.WriteLine("--------------------------------------------------");
+            // Add space for readability
             Console.WriteLine("");
           }
           else
@@ -152,7 +130,7 @@ namespace Blackjack
             //Add space for readability
             Console.WriteLine("");
             // Add new card
-            house.DealCard(deck);
+            house.DealCard(deck.Cards);
             // Print out dealers next card
             Console.WriteLine($"The dealer's next card is: {house.Hand[y].DisplayCard()} and has a value of {house.Hand[y].GetCardValue()}.");
             // Notify user of the updated house value
@@ -180,7 +158,10 @@ namespace Blackjack
             }
             else if (house.HandValue == player.HandValue)
             {
+              Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
               Console.WriteLine("Tie game!");
+              Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
             }
             else if (house.HandValue < player.HandValue)
             {

@@ -43,7 +43,7 @@ namespace Blackjack
       for (var i = Cards.Count - 1; i >= 0; i--)
       {
         // j = random integer (where 0 <= j <= i)
-        var j = new Random().Next(i);
+        var j = new Random().Next(Cards.Count);
         // swap deck[i] with deck[j]
         var temp = Cards[j];
         Cards[j] = Cards[i];
