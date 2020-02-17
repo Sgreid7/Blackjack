@@ -49,7 +49,6 @@ namespace Blackjack
         Cards[j] = Cards[i];
         Cards[i] = temp;
       }
-
     }
 
 

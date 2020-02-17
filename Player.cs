@@ -5,10 +5,9 @@ namespace Blackjack
 {
   public class Player
   {
-    // Create a new instance of player for both user and dealer
-
     // PROPERTIES
     // One for hand and one for hand value
+    public string Name { get; set; }
     public List<Card> Hand { get; set; }
 
     public int HandValue { get; set; }
