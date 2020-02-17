@@ -22,5 +22,13 @@ namespace Blackjack
       // Remove the card
       deck.RemoveAt(0);
     }
+
+    public void ShowHand()
+    {
+      for (var i = 0; i < Hand.Count; i++)
+      {
+        Console.WriteLine(Hand[i]);
+      }
+    }
   }
 }

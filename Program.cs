@@ -20,7 +20,7 @@ namespace Blackjack
         // CREATE PLAYER AND HOUSE HANDS
         // Add a player hand and a house hand
         Console.WriteLine("How many users want to play?");
-        Console.WriteLine("Please enter a number.")
+        Console.WriteLine("Please enter a number.");
         var numOfPlayers = int.Parse(Console.ReadLine());
 
         // Add space for readability
@@ -37,8 +37,6 @@ namespace Blackjack
           player.HandValue = 0;
           game.Players.Add(player);
         }
-
-
 
         // Console.WriteLine("----------------------------------------------------------");
         // Add 2 cards to the player hand. Remove these 2 from the deck

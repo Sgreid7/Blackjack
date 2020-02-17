@@ -32,14 +32,27 @@ namespace Blackjack
       }
     }
 
-    public void DealHands(List<Card> deck)
-    {
-      foreach (Player p in Players)
-      {
-        p.DealCard(deck);
-        p.DealCard(deck);
-      }
-    }
+    // public void DealHands( deck)
+    // {
+    //   foreach (Player p in Players)
+    //   {
+    //     p.DealCard(deck.Cards);
+    //     p.DealCard(deck.Cards);
+    //     if (p.Name != "Dealer")
+    //     {
+    //       // Print first card value
+    //       Console.WriteLine("----------------------------------------------------------");
+    //       Console.WriteLine($"{p.Name}'s first card is: {p.Hand[0].DisplayCard()} and has a value of {p.Hand[0].GetCardValue()}.");
+    //       // Print second card value
+    //       Console.WriteLine($"{p.Name}'s second card is: {p.Hand[1].DisplayCard()} and has a value of {p.Hand[1].GetCardValue()}.");
+    //       Console.WriteLine("----------------------------------------------------------");
+    //       // Notify user of current hand total
+    //       Console.WriteLine($"The total value for {p.Name}'s hand is {p.HandValue}.");
+    //       Console.WriteLine("");
+    //     }
+    //   }
+    // }
+
 
     public void ValidateInput(string x, string y)
     {
