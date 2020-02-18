@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Blackjack
 {
 
-  class Deck
+  public class Deck
   {
     // Add in the suit and rank values
     public List<string> Suits { get; set; }
