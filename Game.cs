@@ -61,6 +61,19 @@ namespace Blackjack
       }
     }
 
+    // public void ShowHand(List<Card> Hand, string name)
+    // {
+    //   for (var i = 0; i < Hand.Count; i++)
+    //   {
+    //     // Print first card value
+    //     Console.WriteLine("----------------------------------------------------------");
+    //     Console.WriteLine($"{name}'s first card is: {Hand[0].DisplayCard()} and has a value of {Hand[0].GetCardValue()}.");
+    //     // Print second card value
+    //     Console.WriteLine($"{name}'s second card is: {Hand[1].DisplayCard()} and has a value of {Hand[1].GetCardValue()}.");
+    //     Console.WriteLine("----------------------------------------------------------");
+    //   }
+    // }
+
     public void DealHands(Deck deck)
     {
       foreach (Player p in Players)
@@ -71,15 +84,7 @@ namespace Blackjack
         // Show cards if player isn't the dealer
         if (p.Name != "Dealer")
         {
-          // Print first card value
-          Console.WriteLine("----------------------------------------------------------");
-          Console.WriteLine($"{p.Name}'s first card is: {p.Hand[0].DisplayCard()} and has a value of {p.Hand[0].GetCardValue()}.");
-          // Print second card value
-          Console.WriteLine($"{p.Name}'s second card is: {p.Hand[1].DisplayCard()} and has a value of {p.Hand[1].GetCardValue()}.");
-          Console.WriteLine("----------------------------------------------------------");
-          // Notify user of current hand total
-          Console.WriteLine($"The total value for {p.Name}'s hand is {p.HandValue}.");
-          Console.WriteLine("");
+          p.ShowHand();
         }
       }
     }
@@ -155,10 +160,11 @@ namespace Blackjack
       Console.WriteLine("This is the dealers hand:");
       // Add space for readability in terminal
       Console.WriteLine("-----------------------------------");
-      for (var i = 0; i < Players[0].Hand.Count; i++)
-      {
-        Console.WriteLine($"{Players[0].Hand[i].DisplayCard()} has a value of {Players[0].Hand[i].GetCardValue()}.");
-      }
+      // for (var i = 0; i < Players[0].Hand.Count; i++)
+      // {
+      //   Console.WriteLine($"{Players[0].Hand[i].DisplayCard()} has a value of {Players[0].Hand[i].GetCardValue()}.");
+      // }
+      Players[0].ShowHand();
       Console.WriteLine("-----------------------------------");
       // Print out the total for the dealer hand
       Console.WriteLine($"The total value for the dealer's hand is {Players[0].HandValue}.");
@@ -265,10 +271,5 @@ namespace Blackjack
         Input = Console.ReadLine().ToLower();
       }
     }
-
-
-
-
-
   }
 }

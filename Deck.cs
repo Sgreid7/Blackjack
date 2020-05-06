@@ -23,13 +23,13 @@ namespace Blackjack
 
       // Iterate through the suit and rank lists to generate a card
       // This will create 52 unique cards
-      for (var i = 0; i < Suits.Count; i++)
+      foreach (var suit in Suits)
       {
-        for (var j = 0; j < Ranks.Count; j++)
+        foreach (var rank in Ranks)
         {
           var card = new Card();
-          card.Suit = Suits[i];
-          card.Rank = Ranks[j];
+          card.Suit = suit;
+          card.Rank = rank;
 
           Cards.Add(card);
         }

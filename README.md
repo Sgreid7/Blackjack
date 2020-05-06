@@ -1,25 +1,48 @@
-# Default Template for SDG .NET Course
+# Blackjack
 
-This is the default template for a simple .NET Core console app. This template has:
+A multi-player of Blackjack with a computer dealer
 
-- github integration
+# Includes:
 
-## To push to github
+- [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
+- Classes and Methods
 
-To create and push your current code to github, use the task `create-github`.
+```JSX
+static void Main(string[] args)
+    {
+      var isPlaying = true;
+      while (isPlaying)
+      {
+        var deck = new Deck();
+        var game = new Game();
 
-How?
+        game.ResetHands();
 
-1. Open your command pallette by using (Mac) `shift + cmd + p` or (Windows) `shift + ctrl + p`
-2. Search and Select `Tasks: Run Task`
-3. Select `create-github` from the dropdown
+        deck.ShuffleDeck();
 
-This will create a new github repo, locally and up on github and also push your current code.
+        game.GeneratePlayers();
 
-## To turn in your assignment:
+        game.DealHands(deck);
 
-after you have created a github repo, completed your project and pushed your code, follow these instructions: https://suncoast.io/handbook/tools/assignment-turn-in/
+        game.CheckPlayerHands(deck);
 
-## PROTIP:
+        game.CheckDealerHand(deck);
 
-When you are complete with the project and have turned it in to your instructor, update this read me with details about the assignment.
+        game.CompareHands();
+
+        Console.WriteLine("Would you like to play again or quit?");
+        Console.WriteLine("Enter (YES) to continue playing or (NO) to quit.");
+        game.Input = Console.ReadLine().ToLower();
+
+        game.ValidateInput("yes", "no");
+
+        if (game.Input == "no")
+        {
+          isPlaying = false;
+          Console.WriteLine("----------------------------------------------------");
+          Console.WriteLine("Thank you for playing blackjack! See you next time.");
+          Console.WriteLine("----------------------------------------------------");
+        }
+      }
+    }
+```

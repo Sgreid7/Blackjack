@@ -16,7 +16,7 @@ namespace Blackjack
         // Start a new game from game class
         var game = new Game();
 
-        // *****Reset Hands ***** 
+        // ***** Reset Hands ***** 
         game.ResetHands();
 
         // ***** Shuffle the deck from a method in the deck class *****

@@ -25,10 +25,15 @@ namespace Blackjack
 
     public void ShowHand()
     {
-      for (var i = 0; i < Hand.Count; i++)
-      {
-        Console.WriteLine(Hand[i]);
-      }
+      // Print first card value
+      Console.WriteLine("----------------------------------------------------------");
+      Console.WriteLine($"{Name}'s first card is: {Hand[0].DisplayCard()} and has a value of {Hand[0].GetCardValue()}.");
+      // Print second card value
+      Console.WriteLine($"{Name}'s second card is: {Hand[1].DisplayCard()} and has a value of {Hand[1].GetCardValue()}.");
+      Console.WriteLine("----------------------------------------------------------");
+      // Notify user of current hand total
+      Console.WriteLine($"The total value for {Name}'s hand is {HandValue}.");
+      Console.WriteLine("");
     }
   }
 }
